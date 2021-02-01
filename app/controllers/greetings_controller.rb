@@ -1,13 +1,9 @@
 class GreetingsController < ApplicationController
-  before_action :set_greeting, only: %i[ show edit update destroy ]
+  before_action :set_greeting, only: %i[ show ]
 
-  # GET /greetings or /greetings.json
+  # GET /greetings
   def index
     @greetings = Greeting.all
-  end
-
-  # GET /greetings/1 or /greetings/1.json
-  def show
   end
 
   # GET /greetings/new
@@ -15,44 +11,33 @@ class GreetingsController < ApplicationController
     @greeting = Greeting.new
   end
 
-  # GET /greetings/1/edit
-  def edit
+  # GET /greetings/1
+  def show
+    
   end
 
-  # POST /greetings or /greetings.json
+  # POST /greetings
   def create
-    @greeting = Greeting.new(greeting_params)
+    @greeting = Greeting.new()
 
     respond_to do |format|
       if @greeting.save
-        format.html { redirect_to @greeting, notice: "Greeting was successfully created." }
-        format.json { render :show, status: :created, location: @greeting }
+        format.turbo_stream
+        format.html { redirect_to greeting_url, notice: "Greeting was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @greeting.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /greetings/1 or /greetings/1.json
-  def update
-    respond_to do |format|
-      if @greeting.update(greeting_params)
-        format.html { redirect_to @greeting, notice: "Greeting was successfully updated." }
-        format.json { render :show, status: :ok, location: @greeting }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @greeting.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /greetings/1 or /greetings/1.json
+  # DELETE /greetings/1
   def destroy
+    @greeting = Greeting.find(params[:id])
     @greeting.destroy
+
     respond_to do |format|
+      format.turbo_stream
       format.html { redirect_to greetings_url, notice: "Greeting was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 
@@ -60,10 +45,5 @@ class GreetingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_greeting
       @greeting = Greeting.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def greeting_params
-      params.require(:greeting).permit(:word)
     end
 end

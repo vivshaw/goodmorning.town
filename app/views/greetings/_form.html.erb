@@ -11,12 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :word %>
-    <%= form.text_field :word %>
-  </div>
-
   <div class="actions">
-    <%= form.submit %>
+    <%= button_to 'Create Greeting', method: :post %>
   </div>
 <% end %>
