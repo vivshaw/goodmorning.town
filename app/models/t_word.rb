@@ -1,0 +1,2 @@
+class TWord < ApplicationRecord
+end
