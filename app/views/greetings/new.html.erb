@@ -1,6 +1,5 @@
-<%= turbo_frame_tag "new_greeting", target: "_top" do %>
+<%= turbo_frame_tag "new_greeting" do %>
   <h1>New Greeting</h1>
   <%= render 'form', greeting: @greeting %>
 <% end %>
 
-<%= link_to 'Back', greetings_path %>

@@ -2,7 +2,7 @@ class Greeting < ApplicationRecord
   before_validation :assign_random_word
   validates :word, presence: true
 
-  broadcasts_to ->(greeting) { "greetings" }
+  broadcasts_to -> (greeting) { "greetings" }, inserts_by: :prepend
 
   private
 

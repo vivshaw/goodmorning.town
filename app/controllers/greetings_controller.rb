@@ -3,7 +3,7 @@ class GreetingsController < ApplicationController
 
   # GET /greetings
   def index
-    @greetings = Greeting.all
+    @greetings = Greeting.last(10).reverse
   end
 
   # GET /greetings/new
@@ -13,7 +13,7 @@ class GreetingsController < ApplicationController
 
   # GET /greetings/1
   def show
-    
+    @new_greeting = Greeting.new
   end
 
   # POST /greetings
@@ -22,8 +22,8 @@ class GreetingsController < ApplicationController
 
     respond_to do |format|
       if @greeting.save
-        format.turbo_stream
-        format.html { redirect_to greeting_url, notice: "Greeting was successfully created." }
+        format.turbo_stream { redirect_to @greeting, notice: "Greeting was successfully created." }
+        format.html { redirect_to @greeting, notice: "Greeting was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end

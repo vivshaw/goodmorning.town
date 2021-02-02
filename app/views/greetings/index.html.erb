@@ -1,14 +1,12 @@
 <p id="notice"><%= notice %></p>
 <%= turbo_stream_from "greetings" %>
 
-<h1>Greetings</h1>
+<%= turbo_frame_tag 'new_greeting', src: new_greeting_path %>
+
+<h1>Recent Greetings</h1>
 
 <table>
   <tbody id="greetings">
     <%= render @greetings %>
   </tbody>
 </table>
-
-<br>
-
-<%= turbo_frame_tag 'new_greeting', src: new_greeting_path, target: "_top" %>
