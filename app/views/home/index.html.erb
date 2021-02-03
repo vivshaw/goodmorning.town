@@ -6,7 +6,7 @@
   <h1>Recent Greetings</h1>
 
   <table>
-    <tbody id="greetings" data-greeting-target="greetings" data-controller="greeting">
+    <tbody id="greetings" data-controller="greetingsList">
       <%= render partial: "greetings/greeting", collection: @greetings, locals: {static: true} %>
     </tbody>
   </table>

@@ -1,27 +1,17 @@
 import { Controller } from "stimulus";
 
-/* Controller for the entire app.
+/* Controller for a single Greeting.
+ * We only want to display 10 recent greetings.
+ * So, each time we add a new element, we need to call into the GreetingsList
+ * to trim the greetings.
  */
-export default class extends Controller {
-  static targets = ["greetings"];
-
-  /* Removes the final Greeting from the list.
-   * Fires when a new Greeting is streamed via Turbo Streams.
-   * Is called from the StreamElement controller.
-   */
-  onAddGreeting() {
-    console.log("adding greeting");
-
-    /* Yeet that final Greeting */
-    this.greetingsTarget.lastElementChild.remove();
-  }
-
+export default class Greeting extends Controller {
   connect() {
-    console.log("connecting greeting controller");
-
-    /* We use this neat little trick to make this controller accessible throughout the app:
+    /* We use this neat little trick to access the Greeting controller:
      * https://dev.to/leastbad/the-best-one-line-stimulus-power-move-2o90
+     * We do this so the Greetings controller can trim down the greetings
+     * list to the right number of elements.
      */
-    this.element[this.identifier] = this;
+    document.querySelector("#greetings").greetingsList.trimGreetingsToMax();
   }
 }
