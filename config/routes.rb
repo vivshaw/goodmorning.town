@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
-  resources :greetings, only: [:index, :new, :show, :create, :destroy]
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # Main screen
+  root "home#index"
+
+  # Greeting routes. Used only for Turbo, not visited directly
+  resources :greetings, only: [:new, :show, :create, :destroy]
 end

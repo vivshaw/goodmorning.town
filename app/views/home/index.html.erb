@@ -1,0 +1,13 @@
+<%= turbo_stream_from "greetings" %>
+
+<div>
+  <%= turbo_frame_tag 'new_greeting', src: new_greeting_path %>
+
+  <h1>Recent Greetings</h1>
+
+  <table>
+    <tbody id="greetings" data-greeting-target="greetings" data-controller="greeting">
+      <%= render partial: "greetings/greeting", collection: @greetings, locals: {static: true} %>
+    </tbody>
+  </table>
+</div>

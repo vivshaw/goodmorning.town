@@ -1,4 +1,4 @@
-<tr id="<%= dom_id greeting %>" data-controller="streamElement">
+<tr id="<%= dom_id(greeting) %>"<% unless local_assigns.has_key? :static and static %>data-controller="streamElement"<% end %>>
   <td>good morning <%= greeting.word %> town <%= greeting.id %></td>
   <td><%= link_to 'Destroy', greeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>

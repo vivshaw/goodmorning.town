@@ -12,6 +12,6 @@ export default class extends Controller {
     /* We use this neat little trick to access the Greeting controller:
      * https://dev.to/leastbad/the-best-one-line-stimulus-power-move-2o90
      */
-    document.querySelector("#app").greeting.onAddGreeting();
+    document.querySelector("#greetings").greeting.onAddGreeting();
   }
 }

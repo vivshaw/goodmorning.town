@@ -1,11 +1,6 @@
 class GreetingsController < ApplicationController
   before_action :set_greeting, only: %i[ show ]
 
-  # GET /greetings
-  def index
-    @greetings = Greeting.last(10).reverse
-  end
-
   # GET /greetings/new
   def new
     @greeting = Greeting.new
@@ -27,17 +22,6 @@ class GreetingsController < ApplicationController
       else
         format.html { render :new, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /greetings/1
-  def destroy
-    @greeting = Greeting.find(params[:id])
-    @greeting.destroy
-
-    respond_to do |format|
-      format.turbo_stream
-      format.html { redirect_to greetings_url, notice: "Greeting was successfully destroyed." }
     end
   end
 

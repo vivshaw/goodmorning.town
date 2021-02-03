@@ -3,9 +3,9 @@ import { Controller } from "stimulus";
 /* Controller for the entire app.
  */
 export default class extends Controller {
-  static targets = ["createButton", "greetings"];
+  static targets = ["greetings"];
 
-  /* Removes the final Greeting from the
+  /* Removes the final Greeting from the list.
    * Fires when a new Greeting is streamed via Turbo Streams.
    * Is called from the StreamElement controller.
    */
