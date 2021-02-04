@@ -2,23 +2,20 @@
 
 <main id="wrap" class="flex flex-col justify-between h-screen">
 
-  <header class="flex flex-row p-2">
+  <header class="flex flex-row px-4 pt-2 pb-4">
     <nav>
-      <a href="/" class="block rounded-full p-1">
+      <a href="/" class="block rounded-full">
         <svg class="w-8 h-8 text-cool-gray-800 dark:text-cool-gray-200" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
       </a>
     </nav>
   </header>
 
-  <div class ="flex-grow flex flex-col space-y-10">
-    <h1>Recent Greetings</h1>
+  <div class ="flex-grow flex flex-col space-y-10 px-4">
+    <h1 class="text-4xl font-medium">Recent Greetings</h1>
 
-    <table>
-      <tbody id="greetings" data-controller="greetingsList">
-        <%= render partial: "greetings/greeting", collection: @greetings, locals: {static: true} %>
-      </tbody>
-    </table>
+    <ul id="greetings" data-controller="greetingsList">
+      <%= render partial: "greetings/greeting", collection: @greetings, locals: {static: true} %>
+    </ul>
   </div>
 
-  <footer></footer>
 </main>

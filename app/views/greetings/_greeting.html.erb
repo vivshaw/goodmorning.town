@@ -1,4 +1,4 @@
 <!-- We can pass in the :static key to skip connecting the Stimulus controller for greetings. This helps reduce initial page load JS. -->
-<tr id="<%= dom_id(greeting) %>" <% unless local_assigns.has_key? :static and static %>data-controller="greeting"<% end %>>
-  <td>good morning <%= greeting.word %> town</td>
-</tr>
+<li id="<%= dom_id(greeting) %>" class="pb-2" <% unless local_assigns.has_key? :static and static %>data-controller="greeting"<% end %>>
+  <h2>Good morning, <%= greeting.word %> town!</h2>
+</li>
