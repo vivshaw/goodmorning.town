@@ -1,5 +1,12 @@
 <%= turbo_frame_tag "new_greeting" do %>
-  <h1>New Greeting</h1>
-  <%= render 'form', greeting: @greeting %>
+  <div class="px-4 flex flex-col items-center space-y-5">
+    <h1 class="text-4xl font-medium">Good morning, Neighbor.</h1>
+    
+    <%= form_with(model: @greeting, class: "flex flex-col items-center") do |form| %>
+      <label for="roll" class="pb-1">Roll a greeting!</label>
+      <button type="submit" id="roll" name="commit" class="rounded-full p-4 bg-gray-100">
+        <%= show_svg 'dice', class: "w-10 h-10" %>
+      </button>
+    <% end %>
+  </div>
 <% end %>
-

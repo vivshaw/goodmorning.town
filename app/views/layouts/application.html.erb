@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Good Morning T Town</title>
+    <title>Good Morning Town</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <%= turbo_include_tags %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag "application", "data-turbo-track": "reload" %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
   <body>
-    <%= yield %>
+    <div class="md:max-w-sm md:mx-auto">
+      <%= yield %>
+    </div>
   </body>
 </html>

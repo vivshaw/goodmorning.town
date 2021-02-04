@@ -1,7 +1,22 @@
 <%= turbo_frame_tag "new_greeting" do %>
-  <h1>Current Greeting</h1>
-  <%= render @greeting %>
+  <div class="px-4 flex-grow flex flex-col justify-between items-center space-y-5">
+    <h1 class="text-4xl font-medium">Good morning, <%= @greeting.word %> town!</h1>
 
-  <h1>New Greeting</h1>
-  <%= render 'form', greeting: @new_greeting %>
+    <%= form_with(model: @new_greeting, class: "flex flex-row w-full justify-between") do |form| %>
+      <div class="flex flex-col items-center">
+        <label for="roll" class="pb-1">Copy</label>
+        <button type="submit" id="copy" name="commit" class="rounded-full p-4 bg-gray-100">
+          <%= show_svg 'clipboard', class: "w-10 h-10" %>
+        </button>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <label for="roll" class="pb-1">Reroll</label>
+        <button type="submit" id="roll" name="commit" class="rounded-full p-4 bg-gray-100">
+          <%= show_svg 'dice', class: "w-10 h-10" %>
+        </button>
+      </div>
+    <% end %>
+    
+  </div>
 <% end %>

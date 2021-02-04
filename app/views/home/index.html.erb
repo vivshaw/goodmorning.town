@@ -1,13 +1,17 @@
 <%= turbo_stream_from "greetings" %>
 
-<div>
-  <%= turbo_frame_tag 'new_greeting', src: new_greeting_path %>
+<main id="wrap" class="flex flex-col justify-between h-screen">
 
-  <h1>Recent Greetings</h1>
+  <header class="flex flex-row px-4 py-2">
+    <nav>
+      <a href="/recent" class="block rounded-full p-1">
+        <svg class="w-8 h-8 text-cool-gray-800 dark:text-cool-gray-200" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clip-rule="evenodd"></path></svg>
+      </a>
+    </nav>
+  </header>
 
-  <table>
-    <tbody id="greetings" data-controller="greetingsList">
-      <%= render partial: "greetings/greeting", collection: @greetings, locals: {static: true} %>
-    </tbody>
-  </table>
-</div>
+  <div class ="flex-grow flex flex-col space-y-10">
+    <%= show_svg 'undraw_Walking_outside_re_56xo', class: 'w-full h-auto pt-4' %>
+    <%= turbo_frame_tag 'new_greeting', src: new_greeting_path %>
+  </div>
+</main>
