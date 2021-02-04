@@ -1,11 +1,11 @@
 <%= turbo_frame_tag "new_greeting" do %>
-  <div class="px-4 flex-grow flex flex-col justify-between items-center space-y-5">
-    <h1 class="text-4xl font-medium">Good morning, <%= @greeting.word %> town!</h1>
+  <div data-controller="clipboard" class="px-4 flex-grow flex flex-col justify-between items-center space-y-5">
+    <h1 data-clipboard-target="source" class="text-4xl font-medium">Good morning, <%= @greeting.word %> town!</h1>
 
     <%= form_with(model: @new_greeting, class: "flex flex-row w-full justify-between") do |form| %>
       <div class="flex flex-col items-center">
         <label for="roll" class="pb-1">Copy</label>
-        <button type="submit" id="copy" name="commit" class="rounded-full p-4 bg-gray-100">
+        <button type="button" data-action="clipboard#copy" id="copy" class="rounded-full p-4 bg-gray-100">
           <%= show_svg 'clipboard', class: "w-10 h-10" %>
         </button>
       </div>
